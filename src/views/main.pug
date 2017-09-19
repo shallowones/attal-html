@@ -1,0 +1,220 @@
+extends layout
+
+block content
+
+  -
+    var menuItems = [
+      {
+        label: 'Приветствие',
+        name: 'greeting'
+      },
+      {
+        label: 'Наши факультеты',
+        name: 'faculties'
+      },
+      {
+        label: 'Наши услуги',
+        name: 'services'
+      },
+      {
+        label: 'Наша команда',
+        name: 'team'
+      },
+      {
+        label: 'Наши работы',
+        name: 'works'
+      },
+      {
+        label: 'Контакты',
+        name: 'contacts'
+      }
+    ]
+
+    var services = [
+      {
+        img: 'Asset-2.svg',
+        title: 'Модельная стрижка на любую длину волос',
+        price: '1500'
+      },
+      {
+        img: 'Asset-3.svg',
+        title: 'Окрашивание волос',
+        price: '1800'
+      },
+      {
+        img: 'Asset-4.svg',
+        title: 'Осветление волос с тонированием',
+        price: '2500'
+      },
+      {
+        img: 'Asset-5.svg',
+        title: 'Создание вечерних и коктейльных причесок',
+        price: '2000'
+      },
+      {
+        img: 'Asset-6.svg',
+        title: 'Свадебные прически',
+        price: '5000'
+      },
+      {
+        img: 'Asset-7.svg',
+        title: 'Макияж',
+        price: '2000'
+      },
+      {
+        img: 'Asset-8.svg',
+        title: 'Аренда накладных прядей',
+        price: '2000'
+      },
+      {
+        img: 'Asset-9.svg',
+        title: 'Ламинирование волос',
+        price: '2000'
+      },
+      {
+        img: 'Asset-10.svg',
+        title: 'Стрижка огнем',
+        price: '2000'
+      },
+      {
+        img: 'Asset-11.svg',
+        title: 'Макияж для волос',
+        price: '2500'
+      },
+      {
+        img: 'Asset-12.svg',
+        title: 'Горячее обертывание',
+        price: '2000'
+      }
+    ]
+
+  .page
+
+    header.header
+      .header-top.wrapper
+        .header-left
+          .header-item <b>Ханты-Мансийск,</b><br>Энгельса 43
+          .header-item <b>Сургут,</b><br>Ленина 21
+        .header-logo
+          i.icon
+          span Академия свадебных стилистов
+        .header-right
+          .header-item Телефон<br>+7 3467 <b>22 54 37</b>
+          .header-item Viber, WhatsApp<br>+7 <b>915 120 12 93</b>
+          .header-item
+            a(href="#").social.insta
+            a(href="#").social.vk
+      .menu
+        .wrapper
+          each item in menuItems
+            a(name=item.name).menu__item
+              span= item.label
+
+    main.main
+      .main-top
+        .wrapper
+          .main-top-text.
+            Профессиональные <span>стилисты</span>, уникальные
+            <span>авторские курсы</span> по свадебным прическам и макияжу
+
+      .wrapper
+        h1.h1 Наши факультеты
+        .faculties
+          .faculties-item
+            img(src="images/fac-1.png").faculties-item__img
+            .faculties-item__title Факультет парикмахерского искусства
+          .faculties-item
+            img(src="images/fac-2.png").faculties-item__img
+            .faculties-item__title Факультет свадебной<br>моды
+          .faculties-item
+            img(src="images/fac-3.png").faculties-item__img
+            .faculties-item__title Факультет ногетового<br>сервиса
+
+        h1.h1 Наши услуги
+        .services
+          each service, index in services
+            .services-item
+              .services-item-flex
+                img(src='images/svg/' + service.img).services-item__img
+                .services-item__title= service.title
+                if (index === 0 || index === 6)
+                  .services-item__price
+                    span
+                      i= service.price
+                    | руб.
+                else
+                  .services-item__price
+                    | от
+                    span
+                      i= service.price
+                    | руб.
+
+      .main-team
+        .team.wrapper
+          .team-left
+            h1.h1 Наша команда
+            .team-desc.
+              Мы являемся сильной командой опытных стилистов
+              и преподавателей по парикмахерскому искусству
+              и декоративной косметике.
+            .team-tag Мы не следуем трендам — мы задаем их сами!
+          .team-right
+            .team-staff
+              img(src="images/staff-1.png").team-staff__img
+              .team-staff__name Этьен Атталь
+              .team-staff__desc Директор и основатель академии
+            .team-staff
+              img(src="images/staff-2.png").team-staff__img
+              .team-staff__name Наталья Ивашкеева
+              .team-staff__desc Ведущий стилист
+
+      .wrapper
+        h1.h1 Наши работы
+        .faculties
+          .faculties-item
+            img(src="images/work-1.png").faculties-item__img
+            .faculties-item__title Фотографии невест
+          .faculties-item
+            img(src="images/work-2.png").faculties-item__img
+            .faculties-item__title Конкурсные работы
+          .faculties-item
+            img(src="images/work-3.png").faculties-item__img
+            .faculties-item__title Работы учеников
+
+      .tabs
+        input(type="radio", name="tabs" id="hanty", checked).tabs__input
+        label(for="hanty").tabs__label
+          span Ханты-Мансийск
+        input(type="radio", name="tabs", id="surgut").tabs__input
+        label(for="surgut").tabs__label
+          span Сургут
+        section.hanty
+          .contacts.wrapper
+            .contacts__item.dot Ханты-Мансийск, Энгельска 43
+            .contacts__item.phone <span class="label">Телефон</span>+7 3467 <b>22 54 37</b>
+            .contacts__item.phone <span class="label">Viber, WhatsApp</span>+7 915 <b>120 12 93</b>
+            .contacts__item.mail
+              a(href="#") wedding@stylist.ru
+            .contacts__item.nope
+              a(href="#").social.insta
+              a(href="#").social.vk
+          .map
+            img(src="images/map.png")
+        section.surgut
+          .contacts.wrapper
+            .contacts__item.dot Сургут, Энгельска 43
+            .contacts__item.phone <span class="label">Телефон</span>+7 3467 <b>22 54 37</b>
+            .contacts__item.phone <span class="label">Viber, WhatsApp</span>+7 915 <b>120 12 93</b>
+            .contacts__item.mail
+              a(href="#") wedding@stylist.ru
+            .contacts__item.nope
+              a(href="#").social.insta
+              a(href="#").social.vk
+          .map
+            img(src="images/map.png")
+
+      footer.footer
+        .wrapper
+          .footer-left Академия свадебных стилистов ©<br>2017
+          .footer-right
+            img(src="images/counter.png")
