@@ -1,7 +1,7 @@
 @import (inline) "normalize.css/normalize.css";
 
-@desktop: ~"(max-width: 1400px)";
-@plan: ~"(max-width: 768px)";
+@desktop-mini: ~"(max-width: 1200px)";
+@plan: ~"(max-width: 767px)";
 @mobile: ~"(max-width: 480px)";
 
 html {
@@ -13,6 +13,10 @@ html {
 body {
   background-color: #fff;
   line-height: 1.25rem;
+}
+
+html, body, .page {
+  width: 100%;
 }
 
 .index-menu {
@@ -49,6 +53,11 @@ a {
 .wrapper {
   width: 1170px;
   margin: 0 auto;
+
+  @media screen and @desktop-mini {
+    width: ~"calc(100% - 2rem)";
+    overflow: hidden;
+  }
 }
 
 .header {
@@ -64,14 +73,48 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and @desktop-mini {
+      width: auto;
+    }
   }
 
   &-left {
     width: 17.5rem;
+
+    @media screen and @desktop-mini {
+      .header-item {
+
+        & > b {
+          font-size: .875rem;
+        }
+      }
+    }
   }
 
   &-right {
     width: 23.25rem;
+
+    @media screen and @desktop-mini {
+      position: relative;
+      justify-content: space-around;
+
+      .header-item {
+        & > span {
+          font-size: .75rem;
+        }
+
+        &:last-child {
+          position: absolute;
+          left: ~"calc(50% - 2rem)";
+          bottom: -2.5rem;
+
+          & > .social:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
   }
 
   &-logo {
@@ -122,6 +165,7 @@ a {
 .menu {
   border-top: 1px solid #0a282d;
   border-bottom: 2px solid #0a282d;
+  text-align: center;
 
   & > .wrapper {
     display: flex;
@@ -131,9 +175,9 @@ a {
 
   &__item {
     display: block;
-    padding: 1.25rem;
+    padding: 1.25rem 0;
     position: relative;
-    font-size: 14px;
+    font-size: .875rem;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
@@ -146,9 +190,9 @@ a {
     &:after {
       content: '';
       position: absolute;
-      left: ~"calc(50% - calc(100% - .75rem) / 2)";
+      left: 0;
       top: 50%;
-      width: ~"calc(100% - .75rem)";
+      width: 100%;
       height: 10px;
       background-color: #ffe9e5;
       z-index: 1;
@@ -180,6 +224,15 @@ a {
         right: 0;
       }
     }
+
+    @media @desktop-mini {
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      &:hover:after {
+        opacity: 0;
+      }
+    }
   }
 }
 
@@ -203,6 +256,10 @@ a {
       & > span {
         color: #df5476;
       }
+    }
+
+    @media @desktop-mini {
+      background-position-x: 60%;
     }
   }
 
@@ -267,8 +324,9 @@ a {
     margin-bottom: 3.125rem;
 
     &__img {
-      height: 9.125rem;
-      margin-bottom: .875rem;
+      width: 9rem;
+      height: 9rem;
+      margin: 0 auto .875rem auto;
     }
 
     &__title {
@@ -427,6 +485,7 @@ a {
   #hanty:checked ~ .hanty,
   #surgut:checked ~ .surgut {
     display: block;
+    animation: fadein 1s;
   }
 
   #hanty + .tabs__label {
@@ -551,4 +610,47 @@ a {
   &-left {
     line-height: 1.5rem;
   }
+}
+
+.arrow {
+  position: fixed;
+  right: 100px;
+  top: 50%;
+  border-radius: 100%;
+  border: none;
+  background: #ff7f7f url('../images/svg/top.svg') no-repeat center;
+  background-size: 20px;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  opacity: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and @desktop-mini {
+    display: none;
+  }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-o-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

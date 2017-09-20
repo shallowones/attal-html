@@ -99,26 +99,26 @@ block content
           i.icon
           span Академия свадебных стилистов
         .header-right
-          .header-item Телефон<br>+7 3467 <b>22 54 37</b>
-          .header-item Viber, WhatsApp<br>+7 <b>915 120 12 93</b>
+          .header-item <span>Телефон</span><br>+7 3467 <b>22 54 37</b>
+          .header-item <span>Viber, WhatsApp</span><br>+7 <b>915 120 12 93</b>
           .header-item
             a(href="#").social.insta
             a(href="#").social.vk
       .menu
         .wrapper
           each item in menuItems
-            a(name=item.name).menu__item
+            a(href='#' + item.name).menu__item.js-scroll
               span= item.label
 
     main.main
-      .main-top
+      #greeting.main-top
         .wrapper
           .main-top-text.
             Профессиональные <span>стилисты</span>, уникальные
             <span>авторские курсы</span> по свадебным прическам и макияжу
 
       .wrapper
-        h1.h1 Наши факультеты
+        h1#faculties.h1 Наши факультеты
         .faculties
           .faculties-item
             img(src="images/fac-1.png").faculties-item__img
@@ -130,7 +130,7 @@ block content
             img(src="images/fac-3.png").faculties-item__img
             .faculties-item__title Факультет ногетового<br>сервиса
 
-        h1.h1 Наши услуги
+        h1#services.h1 Наши услуги
         .services
           each service, index in services
             .services-item
@@ -149,7 +149,7 @@ block content
                       i= service.price
                     | руб.
 
-      .main-team
+      #team.main-team
         .team.wrapper
           .team-left
             h1.h1 Наша команда
@@ -169,7 +169,7 @@ block content
               .team-staff__desc Ведущий стилист
 
       .wrapper
-        h1.h1 Наши работы
+        h1#works.h1 Наши работы
         .faculties
           .faculties-item
             img(src="images/work-1.png").faculties-item__img
@@ -181,7 +181,7 @@ block content
             img(src="images/work-3.png").faculties-item__img
             .faculties-item__title Работы учеников
 
-      .tabs
+      #contacts.tabs
         input(type="radio", name="tabs" id="hanty", checked).tabs__input
         label(for="hanty").tabs__label
           span Ханты-Мансийск
@@ -202,7 +202,7 @@ block content
             img(src="images/map.png")
         section.surgut
           .contacts.wrapper
-            .contacts__item.dot Сургут, Энгельска 43
+            .contacts__item.dot Сургут, Ленина 21
             .contacts__item.phone <span class="label">Телефон</span>+7 3467 <b>22 54 37</b>
             .contacts__item.phone <span class="label">Viber, WhatsApp</span>+7 915 <b>120 12 93</b>
             .contacts__item.mail
@@ -218,3 +218,5 @@ block content
           .footer-left Академия свадебных стилистов ©<br>2017
           .footer-right
             img(src="images/counter.png")
+
+      button(type="button").arrow.js-arrow

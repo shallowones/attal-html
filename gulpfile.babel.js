@@ -1,38 +1,55 @@
-'use strict';
+'use strict'
 
-import gulp from 'gulp';
-import pug from 'gulp-pug';
-import notify from 'gulp-notify';
-import plumber from 'gulp-plumber';
-import imageMin from 'gulp-imagemin';
+import gulp from 'gulp'
+import pug from 'gulp-pug'
+import notify from 'gulp-notify'
+import plumber from 'gulp-plumber'
+import imageMin from 'gulp-imagemin'
 
-import less from 'gulp-less';
-import LessAutoPrefix from 'less-plugin-autoprefix';
-import LessPluginCleanCSS from 'less-plugin-clean-css';
+import less from 'gulp-less'
+import LessAutoPrefix from 'less-plugin-autoprefix'
+import LessPluginCleanCSS from 'less-plugin-clean-css'
 
-import del from 'del';
-import browserSync from 'browser-sync';
+import del from 'del'
+import browserSync from 'browser-sync'
 
-browserSync.create();
+const babel = require('gulp-babel')
+const uglify = require('gulp-uglify')
+
+browserSync.create()
 
 const plumberOptions = {
   errorHandler: notify.onError()
-};
-const develop = true;
+}
+const develop = true
 
 export const clean = () => del('./build');
 
-export function images() {
+export function jsApp () {
+  return gulp.src('./src/js/app/**/**/*.js')
+    .pipe(babel({presets: ['es2015']}))
+    .pipe(uglify())
+    .on('error', console.error.bind(console))
+    .pipe(gulp.dest('./build/js/app/'))
+}
+
+export function jsVendor () {
+  return gulp
+    .src('./src/js/vendor/**/**/*')
+    .pipe(gulp.dest('./build/js/vendor/'))
+}
+
+export function images () {
   return gulp.src('./src/images/**/*', {since: gulp.lastRun('images')})
     .pipe(imageMin({
       svgoPlugins: [{
         convertPathData: false
       }]
     }))
-    .pipe(gulp.dest('./build/images'));
+    .pipe(gulp.dest('./build/images'))
 }
 
-export function styles() {
+export function styles () {
   let autoPrefix = new LessAutoPrefix({
     browsers: [
       '> 1%',
@@ -40,12 +57,12 @@ export function styles() {
       'Firefox ESR',
       'Opera 12.1'
     ]
-  });
-  let plugins = [autoPrefix];
+  })
+  let plugins = [autoPrefix]
 
   if (!develop) {
-    let cleanCSS = new LessPluginCleanCSS({ advanced: true });
-    plugins.push(cleanCSS);
+    let cleanCSS = new LessPluginCleanCSS({advanced: true})
+    plugins.push(cleanCSS)
   }
 
   return gulp.src('./src/styles/*.less', {since: gulp.lastRun('styles')})
@@ -54,14 +71,14 @@ export function styles() {
       paths: ['node_modules'],
       plugins: plugins
     }))
-    .pipe(gulp.dest('./build/css'));
+    .pipe(gulp.dest('./build/css'))
 }
 
-export function views() {
+export function views () {
   let path = [
     './src/views/*.pug',
     '!./src/views/layout.pug'
-  ];
+  ]
   return gulp.src(path, {since: gulp.lastRun('views')})
     .pipe(plumber(plumberOptions))
     .pipe(pug({
@@ -70,26 +87,27 @@ export function views() {
         dev: develop
       }
     }))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./build'))
 }
 
-export function watch() {
-  gulp.watch('./src/views/**/*.pug', views);
-  gulp.watch('./src/images/**/*', images);
-  gulp.watch('./src/styles/**/*.less', styles);
+export function watch () {
+  gulp.watch('./src/views/**/*.pug', views)
+  gulp.watch('./src/images/**/*', images)
+  gulp.watch('./src/styles/**/*.less', styles)
+  gulp.watch('./src/js/app/**/*.js', jsApp)
 }
 
-export function serve() {
+export function serve () {
   browserSync.init({
     server: './build'
-  });
-  browserSync.watch('./build/**/*.*').on('change', browserSync.reload);
+  })
+  browserSync.watch('./build/**/*.*').on('change', browserSync.reload)
 }
 
-export const build = gulp.parallel(views, styles, images);
+export const build = gulp.parallel(views, styles, images, jsVendor, jsApp)
 
 export default gulp.series(
   clean,
   build,
   gulp.parallel(serve, watch)
-);
+)
