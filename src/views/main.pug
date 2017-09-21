@@ -104,11 +104,26 @@ block content
           .header-item
             a(href="#").social.insta
             a(href="#").social.vk
+        button(type="button", value=".mobile")#menu-icon
+          span
+          span
+          span
+          span
       .menu
         .wrapper
           each item in menuItems
             a(href='#' + item.name).menu__item.js-scroll
               span= item.label
+
+      .mobile
+        .wrapper
+          .header-item <b>Ханты-Мансийск,</b><br>Энгельса 43
+          .header-item <b>Сургут,</b><br>Ленина 21
+          .header-item <span>Телефон</span><br>+7 3467 <b>22 54 37</b>
+          .header-item <span>Viber, WhatsApp</span><br>+7 <b>915 120 12 93</b>
+          .header-item
+            a(href="#").social.insta
+            a(href="#").social.vk
 
     main.main
       #greeting.main-top
@@ -119,16 +134,17 @@ block content
 
       .wrapper
         h1#faculties.h1 Наши факультеты
-        .faculties
-          .faculties-item
-            img(src="images/fac-1.png").faculties-item__img
-            .faculties-item__title Факультет парикмахерского искусства
-          .faculties-item
-            img(src="images/fac-2.png").faculties-item__img
-            .faculties-item__title Факультет свадебной<br>моды
-          .faculties-item
-            img(src="images/fac-3.png").faculties-item__img
-            .faculties-item__title Факультет ногетового<br>сервиса
+        .swiper-container
+          .swiper-wrapper.faculties
+            .swiper-slide.faculties-item
+              img(src="images/fac-1.png").faculties-item__img
+              .faculties-item__title Факультет парикмахерского искусства
+            .swiper-slide.faculties-item
+              img(src="images/fac-2.png").faculties-item__img
+              .faculties-item__title Факультет свадебной<br>моды
+            .swiper-slide.faculties-item
+              img(src="images/fac-3.png").faculties-item__img
+              .faculties-item__title Факультет ногетового<br>сервиса
 
         h1#services.h1 Наши услуги
         .services
@@ -157,7 +173,7 @@ block content
               Мы являемся сильной командой опытных стилистов
               и преподавателей по парикмахерскому искусству
               и декоративной косметике.
-            .team-tag Мы не следуем трендам — мы задаем их сами!
+            .team-tag Мы не следуем трендами — мы задаем их сами!
           .team-right
             .team-staff
               img(src="images/staff-1.png").team-staff__img
@@ -170,16 +186,17 @@ block content
 
       .wrapper
         h1#works.h1 Наши работы
-        .faculties
-          .faculties-item
-            img(src="images/work-1.png").faculties-item__img
-            .faculties-item__title Фотографии невест
-          .faculties-item
-            img(src="images/work-2.png").faculties-item__img
-            .faculties-item__title Конкурсные работы
-          .faculties-item
-            img(src="images/work-3.png").faculties-item__img
-            .faculties-item__title Работы учеников
+        .swiper-container
+          .swiper-wrapper.faculties.works
+            .swiper-slide.faculties-item
+              img(src="images/work-1.png").faculties-item__img
+              .faculties-item__title Фотографии невест
+            .swiper-slide.faculties-item
+              img(src="images/work-2.png").faculties-item__img
+              .faculties-item__title Конкурсные работы
+            .swiper-slide.faculties-item
+              img(src="images/work-3.png").faculties-item__img
+              .faculties-item__title Работы учеников
 
       #contacts.tabs
         input(type="radio", name="tabs" id="hanty", checked).tabs__input

@@ -6,6 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oranienbaum|PT+Serif:400,400i,700,700i">
+    <link rel="stylesheet" href="./js/vendor/swiper/swiper.min.css">
     <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
@@ -22,9 +23,19 @@
             <div class="header-item"><span>Viber, WhatsApp</span><br>+7 <b>915 120 12 93</b></div>
             <div class="header-item"><a class="social insta" href="#"></a><a class="social vk" href="#"></a></div>
           </div>
+          <button type="button" value=".mobile" id="menu-icon"><span></span><span></span><span></span><span></span></button>
         </div>
         <div class="menu">
           <div class="wrapper"><a class="menu__item js-scroll" href="#greeting"><span>Приветствие</span></a><a class="menu__item js-scroll" href="#faculties"><span>Наши факультеты</span></a><a class="menu__item js-scroll" href="#services"><span>Наши услуги</span></a><a class="menu__item js-scroll" href="#team"><span>Наша команда</span></a><a class="menu__item js-scroll" href="#works"><span>Наши работы</span></a><a class="menu__item js-scroll" href="#contacts"><span>Контакты</span></a>
+          </div>
+        </div>
+        <div class="mobile">
+          <div class="wrapper">
+            <div class="header-item"><b>Ханты-Мансийск,</b><br>Энгельса 43</div>
+            <div class="header-item"><b>Сургут,</b><br>Ленина 21</div>
+            <div class="header-item"><span>Телефон</span><br>+7 3467 <b>22 54 37</b></div>
+            <div class="header-item"><span>Viber, WhatsApp</span><br>+7 <b>915 120 12 93</b></div>
+            <div class="header-item"><a class="social insta" href="#"></a><a class="social vk" href="#"></a></div>
           </div>
         </div>
       </header>
@@ -40,15 +51,17 @@
         </div>
         <div class="wrapper">
           <h1 class="h1" id="faculties">Наши факультеты</h1>
-          <div class="faculties">
-            <div class="faculties-item"><img class="faculties-item__img" src="images/fac-1.png">
-              <div class="faculties-item__title">Факультет парикмахерского искусства</div>
-            </div>
-            <div class="faculties-item"><img class="faculties-item__img" src="images/fac-2.png">
-              <div class="faculties-item__title">Факультет свадебной<br>моды</div>
-            </div>
-            <div class="faculties-item"><img class="faculties-item__img" src="images/fac-3.png">
-              <div class="faculties-item__title">Факультет ногетового<br>сервиса</div>
+          <div class="swiper-container">
+            <div class="swiper-wrapper faculties">
+              <div class="swiper-slide faculties-item"><img class="faculties-item__img" src="images/fac-1.png">
+                <div class="faculties-item__title">Факультет парикмахерского искусства</div>
+              </div>
+              <div class="swiper-slide faculties-item"><img class="faculties-item__img" src="images/fac-2.png">
+                <div class="faculties-item__title">Факультет свадебной<br>моды</div>
+              </div>
+              <div class="swiper-slide faculties-item"><img class="faculties-item__img" src="images/fac-3.png">
+                <div class="faculties-item__title">Факультет ногетового<br>сервиса</div>
+              </div>
             </div>
           </div>
           <h1 class="h1" id="services">Наши услуги</h1>
@@ -130,7 +143,7 @@
                 и преподавателей по парикмахерскому искусству
                 и декоративной косметике.
               </div>
-              <div class="team-tag">Мы не следуем трендам — мы задаем их сами!</div>
+              <div class="team-tag">Мы не следуем трендами — мы задаем их сами!</div>
             </div>
             <div class="team-right">
               <div class="team-staff"><img class="team-staff__img" src="images/staff-1.png">
@@ -146,15 +159,17 @@
         </div>
         <div class="wrapper">
           <h1 class="h1" id="works">Наши работы</h1>
-          <div class="faculties">
-            <div class="faculties-item"><img class="faculties-item__img" src="images/work-1.png">
-              <div class="faculties-item__title">Фотографии невест</div>
-            </div>
-            <div class="faculties-item"><img class="faculties-item__img" src="images/work-2.png">
-              <div class="faculties-item__title">Конкурсные работы</div>
-            </div>
-            <div class="faculties-item"><img class="faculties-item__img" src="images/work-3.png">
-              <div class="faculties-item__title">Работы учеников</div>
+          <div class="swiper-container">
+            <div class="swiper-wrapper faculties works">
+              <div class="swiper-slide faculties-item"><img class="faculties-item__img" src="images/work-1.png">
+                <div class="faculties-item__title">Фотографии невест</div>
+              </div>
+              <div class="swiper-slide faculties-item"><img class="faculties-item__img" src="images/work-2.png">
+                <div class="faculties-item__title">Конкурсные работы</div>
+              </div>
+              <div class="swiper-slide faculties-item"><img class="faculties-item__img" src="images/work-3.png">
+                <div class="faculties-item__title">Работы учеников</div>
+              </div>
             </div>
           </div>
         </div>
@@ -194,6 +209,7 @@
       </main>
     </div>
     <script src="./js/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="./js/vendor/swiper/swiper.jquery.min.js"></script>
     <script src="./js/app/main.js"></script>
   </body>
 </html>

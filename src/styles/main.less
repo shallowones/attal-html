@@ -8,6 +8,10 @@ html {
   font-size: 16px;
   font-family: 'PT Serif', serif;
   color: #0a282d;
+
+  @media @mobile {
+    font-size: 14px;
+  }
 }
 
 body {
@@ -67,6 +71,17 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: .625rem 0 1.375rem;
+    position: relative;
+
+    @media @plan {
+      justify-content: center;
+      padding-bottom: .625rem;
+      border-bottom: 1px solid #0a282d;
+
+      &.wrapper {
+        width: 100%;
+      }
+    }
   }
 
   &-left, &-right {
@@ -74,15 +89,19 @@ a {
     justify-content: space-between;
     align-items: center;
 
-    @media screen and @desktop-mini {
+    @media @desktop-mini {
       width: auto;
+    }
+
+    @media @plan {
+      display: none;
     }
   }
 
   &-left {
     width: 17.5rem;
 
-    @media screen and @desktop-mini {
+    @media @desktop-mini {
       .header-item {
 
         & > b {
@@ -132,11 +151,45 @@ a {
       background: data-uri('../images/logo.png') no-repeat center;
       background-size: 126px 70px;
       margin-bottom: 1rem;
+
+      @media @mobile {
+        width: 126px;
+        margin: 0 auto;
+      }
+    }
+
+    & span {
+
+      @media @mobile {
+        display: none;
+      }
     }
   }
 
   &-item {
     display: inline-block;
+  }
+}
+
+.mobile {
+  display: none;
+  border-bottom: 2px solid #0a282d;
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+
+  & .header-item {
+    display: block;
+    margin-bottom: 1rem;
+
+    & .social:first-child {
+      margin-left: 0;
+    }
+
+    & > span {
+      font-size: 1.25rem;
+    }
   }
 }
 
@@ -159,6 +212,12 @@ a {
 
   &:hover {
     box-shadow: 0 0 4px #f25555;
+  }
+
+  @media @mobile {
+    width: 42px;
+    height: 42px;
+    background-size: 100%;
   }
 }
 
@@ -234,6 +293,10 @@ a {
       }
     }
   }
+
+  @media @plan {
+    display: none;
+  }
 }
 
 .main {
@@ -256,10 +319,34 @@ a {
       & > span {
         color: #df5476;
       }
+
+      @media @plan {
+        width: ~"calc(100% - 11rem)";
+        font-size: 2rem;
+        line-height: 2rem;
+      }
+
+      @media @mobile {
+        width: ~"calc(100% - 5rem)";
+      }
     }
 
     @media @desktop-mini {
       background-position-x: 60%;
+    }
+
+    @media @plan {
+      align-items: flex-start;
+      padding-top: 3rem;
+      background-position-x: ~"calc(100% + 27rem)";
+    }
+
+    @media @mobile {
+      background-position: ~"calc(100% + 38rem)" 0;
+      height: 20rem;
+      background-size: auto;
+      padding-top: 1rem;
+      margin-bottom: 3rem;
     }
   }
 
@@ -268,6 +355,15 @@ a {
     padding: 5rem 0;
     background-color: #ffe9e5;
     margin-bottom: 6.25rem;
+
+    @media @desktop-mini {
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    @media @mobile {
+      margin-bottom: 3rem;
+    }
   }
 }
 
@@ -294,14 +390,15 @@ a {
 
 .faculties {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 5.75rem;
 
   &-item {
+    width: 24.375rem;
 
     &__img {
       margin-bottom: 1.875rem;
+      max-width: 100%;
     }
 
     &__title {
@@ -310,6 +407,22 @@ a {
       text-align: center;
       padding: 0 1rem;
     }
+
+    @media @mobile {
+      max-width: 100%;
+      width: auto;
+    }
+  }
+
+  &.works {
+
+    & .faculties-item {
+      margin-right: 1.25rem;
+    }
+  }
+
+  @media @mobile {
+    margin-bottom: 3rem;
   }
 }
 
@@ -334,6 +447,10 @@ a {
       line-height: 1.125rem;
       margin-bottom: .875rem;
       padding: 0 2rem;
+
+      @media @plan {
+        padding: 0;
+      }
     }
 
     &__price {
@@ -372,6 +489,19 @@ a {
       flex-direction: column;
       height: 100%;
     }
+
+    @media @plan {
+      width: 48%;
+    }
+
+    @media @mobile {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @media @desktop-mini {
+    text-align: center;
   }
 }
 
@@ -388,7 +518,25 @@ a {
 
       &:after {
         left: 0;
+
+        @media @desktop-mini {
+          left: ~"calc(50% - 4.0625rem)";
+        }
       }
+
+      @media @desktop-mini {
+        text-align: center;
+      }
+    }
+
+    @media @desktop-mini {
+      width: 100%;
+      padding-top: 0;
+      margin-bottom: 3rem;
+    }
+
+    @media @mobile {
+      margin-bottom: 2rem;
     }
   }
 
@@ -401,12 +549,22 @@ a {
   &-tag {
     font-style: italic;
     font-size: 1.5rem;
+    line-height: 1.5rem;
   }
 
   &-right {
     width: 55%;
     display: flex;
     justify-content: flex-end;
+
+    @media @desktop-mini {
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media @mobile {
+      display: block;
+    }
   }
 
   &-staff {
@@ -424,12 +582,38 @@ a {
       font-size: 1.5rem;
       line-height: 1.5rem;
       margin-bottom: 1.25rem;
+
+      @media @mobile {
+        margin-bottom: .5rem;
+      }
     }
 
     &__desc {
       font-size: 1.125rem;
       line-height: 1.125rem;
     }
+
+    &:first-child {
+
+      @media @desktop-mini {
+        margin-left: 0;
+      }
+    }
+
+    &:last-child {
+
+      @media @mobile {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    @media @mobile {
+      margin: 0 auto 2rem !important;
+    }
+  }
+
+  @media @desktop-mini {
+    display: block;
   }
 }
 
@@ -475,11 +659,36 @@ a {
     &:hover {
       cursor: pointer;
     }
+
+    @media @plan {
+      font-size: 2rem;
+      line-height: 2rem;
+    }
   }
 
   & > section {
     display: none;
     margin-top: 3.25rem;
+
+    & .social:first-child {
+      margin-left: 0;
+    }
+
+    & .contacts__item {
+
+      & .label {
+        font-size: 1.25rem;
+      }
+
+      @media @mobile {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+      }
+    }
+
+    @media @mobile {
+      margin-top: 2rem;
+    }
   }
 
   #hanty:checked ~ .hanty,
@@ -490,14 +699,19 @@ a {
 
   #hanty + .tabs__label {
     margin-right: 6.25rem;
+
+    @media @mobile {
+      margin-right: 1rem;
+    }
   }
 }
 
 .contacts {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 3.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
 
   &__item {
     font-size: 1.25rem;
@@ -506,6 +720,7 @@ a {
     padding-left: 2.5rem;
     text-align: left;
     min-height: 1.5rem;
+    margin: 0 2rem 1rem;
 
     &:before {
       content: '';
@@ -576,6 +791,14 @@ a {
         display: none;
       }
     }
+
+    @media @mobile {
+      min-height: 1.75rem;
+    }
+  }
+
+  @media @mobile {
+    justify-content: flex-start;
   }
 }
 
@@ -584,6 +807,14 @@ a {
   height: 35.625rem;
   overflow: hidden;
   margin-bottom: 6.25rem;
+
+  @media @plan {
+    height: 25rem;
+  }
+
+  @media @mobile {
+    margin-bottom: 3rem;
+  }
 }
 
 .footer {
@@ -624,6 +855,7 @@ a {
   height: 50px;
   outline: none;
   opacity: 0;
+  z-index: 2;
 
   &:hover {
     cursor: pointer;
@@ -653,4 +885,88 @@ a {
 @-o-keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+#menu-icon {
+  display: none;
+  width: 40px;
+  height: 28px;
+  position: absolute;
+  left: 2rem;
+  top: ~"calc(50% - 14px)";
+  background: transparent;
+  border: none;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  outline: none;
+  cursor: pointer;
+
+  & span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background-color: #ff7f7f;
+    border-radius: 6px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+
+    @media @mobile {
+      height: 3px;
+    }
+  }
+
+  & span:nth-child(1) {
+    top: 0;
+  }
+
+  & span:nth-child(2),
+  & span:nth-child(3) {
+    top: 12px;
+
+    @media @mobile {
+      top: 8px;
+    }
+  }
+
+  & span:nth-child(4) {
+    top: 24px;
+
+    @media @mobile {
+      top: 16px;
+    }
+  }
+
+  &.open span:nth-child(1) {
+    top: 12px;
+    width: 0;
+    left: 50%;
+  }
+
+  &.open span:nth-child(2) {
+    transform: rotate(45deg);
+  }
+
+  &.open span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  &.open span:nth-child(4) {
+    top: 12px;
+    width: 0;
+    left: 50%;
+  }
+
+  @media @plan {
+    display: inline-block;
+  }
+
+  @media @mobile {
+    width: 34px;
+    height: 20px;
+    left: 1rem;
+    top: ~"calc(50% - 10px)";
+  }
 }
