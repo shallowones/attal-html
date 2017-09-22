@@ -47,5 +47,26 @@
       })
     }
 
+    // плавающее меню
+    {
+      const $window = $(window)
+      const $menu = $('.menu')
+      const menuOffsetTop = $menu.offset().top
+      const $header = $('.header')
+      const classFixed = 'fixed'
+
+      $window.bind('scroll', (e) => {
+        if (e.currentTarget.pageYOffset >= menuOffsetTop) {
+          $header
+            .addClass(classFixed)
+            .css({'padding-bottom': $menu.css('height')})
+        } else {
+          $header
+            .removeClass(classFixed)
+            .removeAttr('style')
+        }
+      })
+    }
+
   })
 })(jQuery)

@@ -1,7 +1,7 @@
 @import (inline) "normalize.css/normalize.css";
 
 @desktop-mini: ~"(max-width: 1200px)";
-@plan: ~"(max-width: 767px)";
+@plan: ~"(max-width: 768px)";
 @mobile: ~"(max-width: 480px)";
 
 html {
@@ -65,6 +65,16 @@ a {
 }
 
 .header {
+
+  &.fixed {
+
+    & .menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+  }
 
   &-top {
     display: flex;
@@ -214,7 +224,7 @@ a {
     box-shadow: 0 0 4px #f25555;
   }
 
-  @media @mobile {
+  @media @plan {
     width: 42px;
     height: 42px;
     background-size: 100%;
@@ -222,6 +232,8 @@ a {
 }
 
 .menu {
+  width: 100%;
+  background-color: #fff;
   border-top: 1px solid #0a282d;
   border-bottom: 2px solid #0a282d;
   text-align: center;

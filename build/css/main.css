@@ -475,6 +475,12 @@ a {
     overflow: hidden;
   }
 }
+.header.fixed .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
 .header-top {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -488,7 +494,7 @@ a {
   padding: .625rem 0 1.375rem;
   position: relative;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .header-top {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -518,7 +524,7 @@ a {
     width: auto;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .header-left,
   .header-right {
     display: none;
@@ -619,7 +625,7 @@ a {
 .social:hover {
   box-shadow: 0 0 4px #f25555;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .social {
     width: 42px;
     height: 42px;
@@ -627,6 +633,8 @@ a {
   }
 }
 .menu {
+  width: 100%;
+  background-color: #fff;
   border-top: 1px solid #0a282d;
   border-bottom: 2px solid #0a282d;
   text-align: center;
@@ -695,7 +703,7 @@ a {
     opacity: 0;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .menu {
     display: none;
   }
@@ -722,7 +730,7 @@ a {
 .main-top-text > span {
   color: #df5476;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .main-top-text {
     width: calc(100% - 11rem);
     font-size: 2rem;
@@ -739,7 +747,7 @@ a {
     background-position-x: 60%;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .main-top {
     -webkit-box-align: start;
         -ms-flex-align: start;
@@ -848,7 +856,7 @@ a {
   margin-bottom: .875rem;
   padding: 0 2rem;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .services-item__title {
     padding: 0;
   }
@@ -890,7 +898,7 @@ a {
           flex-direction: column;
   height: 100%;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .services-item {
     width: 48%;
   }
@@ -1059,7 +1067,7 @@ a {
 .tabs__label:hover {
   cursor: pointer;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .tabs__label {
     font-size: 2rem;
     line-height: 2rem;
@@ -1196,7 +1204,7 @@ a {
   overflow: hidden;
   margin-bottom: 6.25rem;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .map {
     height: 25rem;
   }
@@ -1342,7 +1350,7 @@ a {
   width: 0;
   left: 50%;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   #menu-icon {
     display: inline-block;
   }
