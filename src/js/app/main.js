@@ -54,18 +54,28 @@
       const menuOffsetTop = $menu.offset().top
       const $header = $('.header')
       const classFixed = 'fixed'
+      const mobileWidth = 768
 
-      $window.bind('scroll', (e) => {
-        if (e.currentTarget.pageYOffset >= menuOffsetTop) {
-          $header
-            .addClass(classFixed)
-            .css({'padding-bottom': $menu.css('height')})
-        } else {
-          $header
-            .removeClass(classFixed)
-            .removeAttr('style')
+      if ($window[0].innerWidth > mobileWidth) {
+        $window.bind('scroll', (e) => {
+          if (e.currentTarget.pageYOffset >= menuOffsetTop) {
+            $header
+              .addClass(classFixed)
+              .css({'padding-bottom': $menu.css('height')})
+          } else {
+            $header
+              .removeClass(classFixed)
+              .removeAttr('style')
+          }
+        })
+      }
+
+      $window.on('resize', (e) => {
+        if (e.currentTarget.innerWidth <= mobileWidth) {
+          $window.unbind('scroll')
         }
       })
+
     }
 
   })
